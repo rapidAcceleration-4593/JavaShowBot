@@ -58,10 +58,10 @@ public class PuckShooterSubsystem extends SubsystemBase {
     }
 
     /**
-     * Checks absolute value of the average velocity from each motor's controller
+     * Checks absolute value of the average velocity from each shooting motor's controller
      * @return boolean of average encoder velocity greater than 5500 RPMs
      */
-    public boolean getAverageVelocity() {
+    public boolean IsAtShootingSpeed() {
         return Math.abs(-leftShooterEncoder.getVelocity() + rightShooterEncoder.getVelocity())/2 > 5500;
     }
 }

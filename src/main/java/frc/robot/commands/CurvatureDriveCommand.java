@@ -4,11 +4,11 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.controllers.ITransRotController;
 import frc.robot.subsystems.DrivebaseSubsystem;
 
-public class ArcadeDriveCommand extends Command {
+public class CurvatureDriveCommand extends Command {
     private final DrivebaseSubsystem drivebase;
     private final ITransRotController controller;
 
-    public ArcadeDriveCommand(DrivebaseSubsystem drivebase, ITransRotController controller) {
+    public CurvatureDriveCommand(DrivebaseSubsystem drivebase, ITransRotController controller) {
         this.drivebase = drivebase;
         this.controller = controller;
 
@@ -17,7 +17,7 @@ public class ArcadeDriveCommand extends Command {
 
     @Override
     public void execute() {
-        drivebase.arcadeDrive(controller.getTransRot().getX(), controller.getTransRot().getY());
+        drivebase.curveDrive(controller.getTransRot().getX(), controller.getTransRot().getY());
     }
 
     @Override

@@ -29,7 +29,7 @@ public class ShooterCommand extends Command {
      */
     @Override
     public void execute() {
-        if (shooterSubsystem.getAverageVelocity()) {
+        if (shooterSubsystem.IsAtShootingSpeed()) {
             shooterSubsystem.runSpinnerWheel(-0.5);
         } else {
             shooterSubsystem.stopSpinnerWheel();

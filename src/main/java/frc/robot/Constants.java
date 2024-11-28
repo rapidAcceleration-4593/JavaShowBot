@@ -8,6 +8,7 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.SparkRelativeEncoder;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 import edu.wpi.first.wpilibj.motorcontrol.PWMTalonSRX;
+import frc.robot.subsystems.DrivebaseSubsystem;
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
@@ -24,6 +25,8 @@ public final class Constants {
     public static final CANSparkMax frontRightMotor = new CANSparkMax(4, MotorType.kBrushless);
     public static final CANSparkMax rearLeftMotor = new CANSparkMax(5, MotorType.kBrushless);
     public static final CANSparkMax rearRightMotor = new CANSparkMax(7, MotorType.kBrushless);
+    
+    public static final DrivebaseSubsystem.DriveMode defaultDriveMode = DrivebaseSubsystem.DriveMode.TANK;
   }
 
   public static final class PuckShooterConstants {

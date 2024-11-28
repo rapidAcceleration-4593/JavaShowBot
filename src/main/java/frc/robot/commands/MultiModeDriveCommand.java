@@ -1,14 +1,14 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.controllers.ITransRotController;
+import frc.robot.controllers.IMultiController;
 import frc.robot.subsystems.DrivebaseSubsystem;
 
-public class ArcadeDriveCommand extends Command {
+public class MultiModeDriveCommand extends Command {
     private final DrivebaseSubsystem drivebase;
-    private final ITransRotController controller;
+    private final IMultiController controller;
 
-    public ArcadeDriveCommand(DrivebaseSubsystem drivebase, ITransRotController controller) {
+    public MultiModeDriveCommand(DrivebaseSubsystem drivebase, IMultiController controller) {
         this.drivebase = drivebase;
         this.controller = controller;
 
@@ -17,7 +17,7 @@ public class ArcadeDriveCommand extends Command {
 
     @Override
     public void execute() {
-        drivebase.arcadeDrive(controller.getTransRot().getX(), controller.getTransRot().getY());
+        drivebase.multiDrive(controller);
     }
 
     @Override

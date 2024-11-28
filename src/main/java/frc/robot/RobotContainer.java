@@ -6,11 +6,12 @@ package frc.robot;
 
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.ShooterCommand;
-import frc.robot.commands.ArcadeDriveCommand;
+import frc.robot.commands.MultiModeDriveCommand;
 import frc.robot.subsystems.DrivebaseSubsystem;
 import frc.robot.subsystems.PuckShooterSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+
+import frc.robot.controllers.*;
 
 public class RobotContainer {
   // Declare and Assign Subsystems
@@ -18,8 +19,8 @@ public class RobotContainer {
   private final PuckShooterSubsystem shooterSubsystem = new PuckShooterSubsystem();
 
   // Declare and Assign Controller(s)
-  private final CommandXboxController driverController =
-    new CommandXboxController(OperatorConstants.driverControllerPort);
+  private final MultiXboxController driverController =
+    new MultiXboxController(OperatorConstants.driverControllerPort);
 
   /**
    * Robot Container Constructor
@@ -27,14 +28,15 @@ public class RobotContainer {
    */
   public RobotContainer() {
     configureBindings();
-    drivebase.setDefaultCommand(new ArcadeDriveCommand(drivebase, driverController));
+    drivebase.setDefaultCommand(new MultiModeDriveCommand(drivebase, driverController));
   }
 
   /**
    * Configure Xbox Controller Bindings
    */
   private void configureBindings() {
-    driverController.a().whileTrue(new ShooterCommand(shooterSubsystem));
+    driverController.rightTrigger().whileTrue(new ShooterCommand(shooterSubsystem));
+    driverController.x().onTrue(drivebase.getToNextDriveModeCommand());
   }
 
   /**
