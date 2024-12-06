@@ -5,6 +5,7 @@ import com.revrobotics.CANSparkMax;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 import frc.robot.Constants.DrivebaseConstants;
 import frc.robot.controllers.IMultiController;
 
@@ -32,6 +33,11 @@ public class DrivebaseSubsystem extends SubsystemBase {
      * @return Establishes motor controller groups between left and right side.
      */
     public DrivebaseSubsystem() {
+        frontLeftMotor.setIdleMode(Constants.DrivebaseConstants.driveBaseIdleMode);
+        frontRightMotor.setIdleMode(Constants.DrivebaseConstants.driveBaseIdleMode);
+        rearLeftMotor.setIdleMode(Constants.DrivebaseConstants.driveBaseIdleMode);
+        rearRightMotor.setIdleMode(Constants.DrivebaseConstants.driveBaseIdleMode);
+
         rearLeftMotor.follow(frontLeftMotor);
         rearRightMotor.follow(frontRightMotor);
     }
@@ -47,18 +53,19 @@ public class DrivebaseSubsystem extends SubsystemBase {
      * @param rotation Rotational Movement with Right Joystick
      */
     public void arcadeDrive(double translation, double rotation) {
-        drive.arcadeDrive(translation, rotation);
+        drive.arcadeDrive(-rotation, -translation);
     }
 
     public void tankDrive(double leftSpeed, double rightSpeed) {
-        drive.tankDrive(leftSpeed, rightSpeed);
+        drive.tankDrive(leftSpeed, -rightSpeed);
     }
 
     public void curveDrive(double translation, double rotation) {
-        drive.curvatureDrive(translation, rotation, false);
+        drive.curvatureDrive(-translation, -rotation, false);
     }
 
     public void multiDrive(IMultiController control) {
+        
         switch (driveMode) {
             case TANK:
                 tankDrive(control.getLeftRightSpeeds().getX(), control.getLeftRightSpeeds().getY());

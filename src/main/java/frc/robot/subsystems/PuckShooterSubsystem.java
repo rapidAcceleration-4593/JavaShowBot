@@ -3,7 +3,6 @@ package frc.robot.subsystems;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.SparkRelativeEncoder;
 
-import edu.wpi.first.wpilibj.motorcontrol.PWMTalonSRX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.PuckShooterConstants;
 
@@ -12,7 +11,6 @@ public class PuckShooterSubsystem extends SubsystemBase {
     // Declare and Assign IDs to Motors and Encoders
     public static final CANSparkMax leftShooter = PuckShooterConstants.leftShooter;
     public static final CANSparkMax rightShooter = PuckShooterConstants.rightShooter;
-    public static final PWMTalonSRX spinnerWheel = PuckShooterConstants.spinnerWheel;
 
     public static final SparkRelativeEncoder leftShooterEncoder = PuckShooterConstants.leftShooterEncoder;
     public static final SparkRelativeEncoder rightShooterEncoder = PuckShooterConstants.rightShooterEncoder;
@@ -45,23 +43,24 @@ public class PuckShooterSubsystem extends SubsystemBase {
      * Run spinner wheel motor
      * @param speed Motor speed from -1 to 1
      */
-    public void runSpinnerWheel(double speed) {
-        spinnerWheel.set(speed);
-    }
+    //TODO Implement with new motor
+    public void runSpinnerWheel(double speed) { }
 
     /**
      * Stop spinner wheel motor
      * @return Sets spinner wheel motor speed to zero
      */
-    public void stopSpinnerWheel() {
-        spinnerWheel.set(0);
-    }
+    //TODO Implement with new motor
+    public void stopSpinnerWheel() {}
 
     /**
      * Checks absolute value of the average velocity from each shooting motor's controller
      * @return boolean of average encoder velocity greater than 5500 RPMs
      */
-    public boolean IsAtShootingSpeed() {
-        return Math.abs(-leftShooterEncoder.getVelocity() + rightShooterEncoder.getVelocity())/2 > 5500;
+    //TODO optimize so it shoots at maximum speed
+    public boolean IsAtShootingSpeed()
+    {   
+        // Shooter encoders use different measurement systems currently
+        return Math.abs(leftShooterEncoder.getVelocity() + rightShooterEncoder.getVelocity()*1000)/2 > 4000;
     }
 }

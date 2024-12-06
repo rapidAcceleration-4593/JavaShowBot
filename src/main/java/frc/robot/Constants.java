@@ -6,8 +6,8 @@ package frc.robot;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.SparkRelativeEncoder;
+import com.revrobotics.CANSparkBase.IdleMode;
 import com.revrobotics.CANSparkLowLevel.MotorType;
-import edu.wpi.first.wpilibj.motorcontrol.PWMTalonSRX;
 import frc.robot.subsystems.DrivebaseSubsystem;
 
 /**
@@ -25,6 +25,8 @@ public final class Constants {
     public static final CANSparkMax frontRightMotor = new CANSparkMax(4, MotorType.kBrushless);
     public static final CANSparkMax rearLeftMotor = new CANSparkMax(5, MotorType.kBrushless);
     public static final CANSparkMax rearRightMotor = new CANSparkMax(7, MotorType.kBrushless);
+
+    public static final IdleMode driveBaseIdleMode = IdleMode.kBrake;
     
     public static final DrivebaseSubsystem.DriveMode defaultDriveMode = DrivebaseSubsystem.DriveMode.TANK;
   }
@@ -32,7 +34,6 @@ public final class Constants {
   public static final class PuckShooterConstants {
     public static final CANSparkMax leftShooter = new CANSparkMax(2, MotorType.kBrushless);
     public static final CANSparkMax rightShooter = new CANSparkMax(6, MotorType.kBrushless);
-    public static final PWMTalonSRX spinnerWheel = new PWMTalonSRX(1);
 
     public static final SparkRelativeEncoder leftShooterEncoder = (SparkRelativeEncoder) leftShooter.getEncoder();
     public static final SparkRelativeEncoder rightShooterEncoder = (SparkRelativeEncoder) rightShooter.getEncoder();
