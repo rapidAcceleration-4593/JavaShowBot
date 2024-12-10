@@ -35,6 +35,8 @@ public final class Constants {
     public static final CANSparkMax leftShooter = new CANSparkMax(2, MotorType.kBrushless);
     public static final CANSparkMax rightShooter = new CANSparkMax(6, MotorType.kBrushless);
 
+    public static final CANSparkMax spinner = new CANSparkMax(1, MotorType.kBrushed);
+
     public static final SparkRelativeEncoder leftShooterEncoder = (SparkRelativeEncoder) leftShooter.getEncoder();
     public static final SparkRelativeEncoder rightShooterEncoder = (SparkRelativeEncoder) rightShooter.getEncoder();
   }

@@ -30,7 +30,7 @@ public class ShooterCommand extends Command {
     @Override
     public void execute() {
         if (shooterSubsystem.IsAtShootingSpeed()) {
-            shooterSubsystem.runSpinnerWheel(-.5);
+            shooterSubsystem.runSpinnerWheel(.5);
         } else {
             shooterSubsystem.stopSpinnerWheel();
         }
